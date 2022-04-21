@@ -1,0 +1,93 @@
+schema {
+    query: Query
+    mutation: Mutation
+    subscription: Subscription
+}
+
+type Query {
+    rooms: [Room]
+    users(count: Int, offset: Int): [User]
+
+    room(
+        id: String!
+    ): Room
+
+    user(
+        id: String!
+    ): User
+}
+
+type Mutation {
+    createRoom(
+        data: CreateRoomInput!
+    ): Room
+    deleteRoom(
+        id: String!
+    ): String
+    connect(
+        data: ConnectRoomInput!
+    ): Room
+
+    createUser(
+        data: CreateUserInput!
+    ): User
+    deleteUser(
+        id: String!
+    ): String
+
+    send(
+        data: CreateMessageInput
+    ): Message
+}
+
+type Subscription {
+    receive(
+        roomId: String
+    ): Message
+}
+
+
+#   DTO
+input CreateUserInput {
+    id: String
+    nickname: String
+}
+
+input CreateRoomInput {
+    title: String
+}
+
+input ConnectRoomInput {
+    roomId: String!,
+    userId: String!
+}
+
+input CreateMessageInput {
+    sender: String!,
+    room: String!,
+    content: String
+}
+
+
+#   domains
+type Room {
+    id: String!
+    title: String!
+    users: [User!]!
+}
+
+type User {
+    id: String!
+    "Names that are visible to other users"
+    nickname: String!
+}
+
+type Message {
+    "ID of the sender of the message"
+    sender: String
+    "ID of the room you are connected to"
+    room: String
+    "Content of the message"
+    content: String
+    created: String     #   UTC
+}

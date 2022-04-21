@@ -1,0 +1,43 @@
+server.error.include-message: always
+
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: graphql
+      username: root
+      password: root
+
+    redis:
+      host: localhost
+      port: 6379
+      channel: messages:queue
+
+logging:
+  level:
+    root: INFO
+    se.magnus: DEBUG
+    org.springframework.data.mongodb.core.ReactiveMongoTemplate: DEBUG
+    org.springframework.data.redis.core.ReactiveRedisTemplate: DEBUG
+
+graphql:
+  graphiql:
+    mapping: /graphiql
+    endpoint:
+      graphql: /graphql
+      subscriptions: /subscriptions
+    subscriptions:
+      timeout: 30
+      reconnect: false
+    basePath: /
+    enabled: true
+    pageTitle: GraphiQL
+    cdn:
+      enabled: false
+      version: latest
+    props:
+      variables:
+        editorTheme: "solarized light"
+    headers:
+      Authorization: "Bearer <your-token>"

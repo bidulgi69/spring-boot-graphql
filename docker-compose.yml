@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  mongodb:
+    image: mongo
+    ports:
+      - "${MONGO_PORT}:27017"
+    env_file:
+      - .mongo.env
+    container_name: mongo-1
+
+  redis:
+    image: redis
+    ports:
+      - "${REDIS_PORT}:6379"
+    env_file:
+      - .redis.env
+    container_name: redis-1
