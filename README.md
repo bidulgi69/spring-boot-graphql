@@ -3,7 +3,7 @@ Simple realtime chat service with GraphQL with Spring Boot, Redis
 <br>
 Using GraphQL subscription and Redis pub/sub, implemented realtime chatting api.
 <br><br>
-<img src="https://user-images.githubusercontent.com/17774927/164501433-c9b7949f-5a00-43b9-87ef-bd55417e3d81.gif">
+<img src="https://user-images.githubusercontent.com/17774927/164505897-2f62dc35-6441-4bfc-a4be-964191397c1d.gif">
 
 ## Stacks
 <div>
@@ -18,7 +18,8 @@ Using GraphQL subscription and Redis pub/sub, implemented realtime chatting api.
 ## Run
     
 1. Run databases
-<br>
+
+
 Before running the application, be sure to fire up Redis and MongoDB with:
 
 
@@ -26,7 +27,6 @@ Before running the application, be sure to fire up Redis and MongoDB with:
 
 
 2. Build & Run java application
-<br>
 
 
     ./gradlew bootjar & java -jar /build/libs/*.jar &
