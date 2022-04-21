@@ -17,20 +17,16 @@ Using GraphQL subscription and Redis pub/sub, implemented realtime chatting api.
 
 ## Run
     
-1. Run databases
+1. Before running the application, be sure to fire up Redis and MongoDB with:
 
 
-Before running the application, be sure to fire up Redis and MongoDB with:
-
-
-    docker-compose up -d
+        docker-compose up -d
 
 
 2. Build & Run java application
 
 
-    ./gradlew bootjar & java -jar /build/libs/*.jar &
-
+        ./gradlew bootjar & java -jar /build/libs/*.jar &
 
 
 ## Playground
