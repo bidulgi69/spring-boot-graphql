@@ -26,7 +26,7 @@ Using GraphQL subscription and Redis pub/sub, implemented realtime chatting api.
 2. Build & Run java application
 
 
-        ./gradlew bootjar & java -jar /build/libs/*.jar &
+        ./gradlew bootjar && java -jar /build/libs/*.jar &
 
 
 ## Playground
