@@ -1,5 +1,5 @@
 # Spring-GraphQL
-Simple realtime chat service with GraphQL with Spring Boot, Redis
+Simple realtime chat service with GraphQL, Spring Boot, Redis
 <br>
 Using GraphQL subscription and Redis pub/sub, implemented realtime chatting api.
 <br><br>
