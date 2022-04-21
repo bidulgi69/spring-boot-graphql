@@ -27,6 +27,9 @@ type Mutation {
     connect(
         data: ConnectRoomInput!
     ): Room
+    disconnect(
+        data: DisconnectRoomInput!
+    ): Room
 
     createUser(
         data: CreateUserInput!
@@ -58,6 +61,11 @@ input CreateRoomInput {
 }
 
 input ConnectRoomInput {
+    roomId: String!,
+    userId: String!
+}
+
+input DisconnectRoomInput {
     roomId: String!,
     userId: String!
 }

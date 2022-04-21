@@ -82,12 +82,19 @@ class RoomMutationResolver(
 
         return room
             .flatMap {
-                reactiveMongoTemplate.save(
-                    it.apply {
-                        this.users.removeIf {v ->
-                            v.id == data.userId
-                        }
+                val refreshed: Room = it.apply {
+                    this.users.removeIf {v ->
+                        v.id == data.userId
                     }
+                }
+                Mono.defer {
+                    if (refreshed.users.size == 0)
+                        deleteRoom(refreshed.id)
+                    else Mono.just(refreshed.id)
+                }.then(
+                    reactiveMongoTemplate.save(
+                        refreshed
+                    )
                 )
             }
     }
