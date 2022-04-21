@@ -37,18 +37,6 @@ class RedisConfiguration {
     }
 
     @Bean
-    fun roomRedisTemplate(lettuceConnectionFactory: ReactiveRedisConnectionFactory): ReactiveRedisTemplate<String, Room> {
-        val serializationContext = RedisSerializationContext
-            .newSerializationContext<String, Room>(StringRedisSerializer())
-            //  hash operations
-            //  format: <Main Key, Field, Value>
-            .hashKey(StringRedisSerializer())
-            .hashValue(Jackson2JsonRedisSerializer(Room::class.java))
-            .build()
-        return ReactiveRedisTemplate(lettuceConnectionFactory, serializationContext)
-    }
-
-    @Bean
     fun messageRedisTemplate(
         lettuceConnectionFactory: ReactiveRedisConnectionFactory,
         objectMapper: ObjectMapper
